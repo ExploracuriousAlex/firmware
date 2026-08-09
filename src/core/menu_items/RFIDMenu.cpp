@@ -12,6 +12,7 @@
 
 #ifndef LITE_VERSION
 #include "modules/rfid/emv_reader.hpp"
+#include "modules/rfid/PN532I2CNetTools.h"
 #endif
 void RFIDMenu::optionsMenu() {
     options = {
@@ -48,6 +49,7 @@ void RFIDMenu::optionsMenu() {
     options.push_back({"PN532 BLE", [=]() { Pn532ble(); }});
 #if !defined(REMOVE_RFID_HW_INTERFACE) // Remove Hardware interface menu due to lack of external GPIO
     options.push_back({"PN532 UART", [=]() { PN532KillerTools(); }});
+    options.push_back({"PN532 Net Bridge", [=]() { PN532I2CNetBridge(); }});
 #endif
 #endif
     options.push_back({"Config", [this]() { configMenu(); }});
